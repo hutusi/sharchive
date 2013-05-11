@@ -2,9 +2,8 @@ using System;
 
 namespace Sharchive
 {
-	public static class Converter
+	public enum ScmItemStatus
 	{
-
 	}
 }
 

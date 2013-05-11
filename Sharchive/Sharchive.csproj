@@ -42,11 +42,20 @@
     <Compile Include="Type\StringExtensions.cs" />
     <Compile Include="Type\Converter.cs" />
     <Compile Include="Type\Reflecter.cs" />
+    <Compile Include="Scm\ScmItemStatus.cs" />
+    <Compile Include="Scm\ScmItemType.cs" />
+    <Compile Include="Scm\ScmItemRepositoryInfo.cs" />
+    <Compile Include="Net\SocketServer.cs" />
+    <Compile Include="Patterns\Decorator.cs" />
+    <Compile Include="Net\DnsDictionary.cs" />
+    <Compile Include="Net\AsynchronousSocketListener.cs" />
+    <Compile Include="Net\SocketListener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Scm\" />
     <Folder Include="Net\" />
     <Folder Include="Type\" />
+    <Folder Include="Patterns\" />
   </ItemGroup>
 </Project>

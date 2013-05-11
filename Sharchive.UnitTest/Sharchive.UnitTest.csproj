@@ -36,6 +36,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test.cs" />
+    <Compile Include="Type\TestConverter.cs" />
+    <Compile Include="Type\TestObjectExtensions.cs" />
+    <Compile Include="Net\TestDnsDictionary.cs" />
+    <Compile Include="Scm\TestSvnAdapter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Type\" />
+    <Folder Include="Net\" />
+    <Folder Include="Scm\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sharchive\Sharchive.csproj">
+      <Project>{F7DAA22D-298A-4FD5-9B1E-D4DB5855B8FF}</Project>
+      <Name>Sharchive</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

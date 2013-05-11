@@ -22,5 +22,14 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Sharchive\Sharchive.csproj
+		Policies = $0
+		$0.ChangeLogPolicy = $1
+		$1.UpdateMode = ProjectRoot
+		$1.MessageStyle = $2
+		$2.LineAlign = 0
+		$1.inheritsSet = Mono
+		$0.DotNetNamingPolicy = $3
+		$3.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$3.ResourceNamePolicy = MSBuild
 	EndGlobalSection
 EndGlobal
