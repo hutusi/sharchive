@@ -9,10 +9,19 @@ namespace Sharchive.Net
 {
 	public class SocketListener
 	{
-		public SocketListener (int port)
+		public SocketListener()
+		{
+			_threadByClient = new Dictionary<TcpClient, Thread>();
+		}
+
+		public SocketListener (MessagePacker messagePacker, Action<TcpClient, string> receivedMsgHandler, int port)
+			: this()
 		{
 			_port = port;
 			_maxClients = 10;
+
+			_messagePacker = messagePacker;
+			_receivedMsgHandler = receivedMsgHandler;
 		}
 
 		public void Start()
@@ -61,13 +70,14 @@ namespace Sharchive.Net
 			}
 		}
 
-		private void _RespondClient(TcpClient client)
+		private void _RespondClient(object param)
 		{
+			TcpClient client = param as TcpClient;
 			try {
 				NetworkStream stream = client.GetStream();
 				var streamReader = new StreamReader(stream);
 				while(true) {
-					var s = streamReader.ReadToEnd();
+					var s = _messagePacker.ExtractContent(streamReader);
 					if (_receivedMsgHandler != null)
 						_receivedMsgHandler(client, s);
 				}
@@ -83,6 +93,7 @@ namespace Sharchive.Net
 		private Dictionary<TcpClient, Thread> _threadByClient;
 
 		private Action<TcpClient, string> _receivedMsgHandler;
+		private MessagePacker _messagePacker;
 	}
 }
 

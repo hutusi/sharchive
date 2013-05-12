@@ -40,6 +40,7 @@
     <Compile Include="Type\TestObjectExtensions.cs" />
     <Compile Include="Net\TestDnsDictionary.cs" />
     <Compile Include="Scm\TestSvnAdapter.cs" />
+    <Compile Include="Net\TestAsynchronousSocketListener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

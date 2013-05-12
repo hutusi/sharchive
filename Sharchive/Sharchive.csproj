@@ -36,26 +36,27 @@
     <Compile Include="Scm\ScmItem.cs" />
     <Compile Include="Scm\ScmAdapter.cs" />
     <Compile Include="Net\SocketClient.cs" />
-    <Compile Include="Net\BlockingSocketClient.cs" />
-    <Compile Include="Net\NonBlockingSocketClient.cs" />
-    <Compile Include="Type\ObjectExtensions.cs" />
-    <Compile Include="Type\StringExtensions.cs" />
-    <Compile Include="Type\Converter.cs" />
-    <Compile Include="Type\Reflecter.cs" />
     <Compile Include="Scm\ScmItemStatus.cs" />
     <Compile Include="Scm\ScmItemType.cs" />
     <Compile Include="Scm\ScmItemRepositoryInfo.cs" />
-    <Compile Include="Net\SocketServer.cs" />
     <Compile Include="Patterns\Decorator.cs" />
     <Compile Include="Net\DnsDictionary.cs" />
     <Compile Include="Net\AsynchronousSocketListener.cs" />
     <Compile Include="Net\SocketListener.cs" />
+    <Compile Include="Net\AsynchronousSocketClient.cs" />
+    <Compile Include="TypeExtensions\ObjectExtensions.cs" />
+    <Compile Include="TypeExtensions\StringExtensions.cs" />
+    <Compile Include="TypeExtensions\Converter.cs" />
+    <Compile Include="TypeExtensions\Reflecter.cs" />
+    <Compile Include="Net\MessagePacker.cs" />
+    <Compile Include="Net\TLVMessagePacker.cs" />
+    <Compile Include="Net\LVMessagePacker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Scm\" />
     <Folder Include="Net\" />
-    <Folder Include="Type\" />
     <Folder Include="Patterns\" />
+    <Folder Include="TypeExtensions\" />
   </ItemGroup>
 </Project>
