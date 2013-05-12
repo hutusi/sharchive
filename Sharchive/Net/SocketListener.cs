@@ -85,7 +85,7 @@ namespace Sharchive.Net
 						_receivedMsgHandler(client, s);
 				}
 			}
-			catch (Exception ex) {
+			catch (Exception) {
 			}
 		}
 

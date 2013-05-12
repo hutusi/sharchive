@@ -1,6 +1,6 @@
 using System;
 
-namespace Sharchive
+namespace Sharchive.Scm
 {
 	public class ScmItemRepositoryInfo
 	{

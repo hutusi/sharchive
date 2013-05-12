@@ -51,6 +51,7 @@
     <Compile Include="Net\MessagePacker.cs" />
     <Compile Include="Net\TLVMessagePacker.cs" />
     <Compile Include="Net\LVMessagePacker.cs" />
+    <Compile Include="Scm\SvnAdapter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
