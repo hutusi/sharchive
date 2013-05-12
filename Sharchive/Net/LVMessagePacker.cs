@@ -23,17 +23,6 @@ namespace Sharchive.Net
 			return Converter.CharsToString(contents);
 		}
 
-		private char[] _ReadBytes(StreamReader streamReader, int length)
-		{
-			char[] buffer = new char[length];
-			int readLength = 0;
-			while (readLength < length)
-			{
-				readLength += streamReader.Read(buffer, 0, length - readLength);
-			}
-			return buffer;
-		}
-
 		public override string Wrap(string message)
 		{
 			var lengthString = Converter.PadIntToString(message.Length, _lengthOfLengthBytes);

@@ -18,6 +18,17 @@ namespace Sharchive.Net
 		{
 			throw new NotImplementedException();
 		}
+
+		protected char[] _ReadBytes(StreamReader streamReader, int length)
+		{
+			char[] buffer = new char[length];
+			int readLength = 0;
+			while (readLength < length)
+			{
+				readLength += streamReader.Read(buffer, 0, length - readLength);
+			}
+			return buffer;
+		}
 	}
 }
 

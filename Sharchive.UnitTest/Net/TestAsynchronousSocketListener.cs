@@ -14,12 +14,14 @@ namespace Sharchive.Net.UnitTest
 		[TestFixtureSetUp()]
 		public void Init()
 		{
-			_listener = new AsynchronousSocketListener(new LVMessagePacker(8), _ServerReceived, 54321);
+
 		}
 
 		[Test()]
-		public void Listen()
+		public void LVListen()
 		{
+			_listener = new AsynchronousSocketListener(new LVMessagePacker(8), _ServerReceived, 54321);
+
 			_listener.Start();
 			_listener.StartToListen();
 
@@ -34,6 +36,34 @@ namespace Sharchive.Net.UnitTest
 			client.Send("Hello");
 			Thread.Sleep(500);
 			Assert.AreEqual("Hello", _serverReceivedMsgs[0]);
+
+			client.Stop();
+			_listener.Stop();
+		}
+
+		[Test()]
+		public void TLVListen()
+		{
+			char[] type = {'@', '@', '#' , '$', '@'};
+			_listener = new AsynchronousSocketListener(new TLVMessagePacker(type, 8), _ServerReceived, 54321);
+			
+			_listener.Start();
+			_listener.StartToListen();
+			
+			_clientReceivedMsgs = new List<string>();
+			_serverReceivedMsgs = new List<string>();
+			
+			var client = new AsynchronousSocketClient(new TLVMessagePacker(type, 8), _ClientReceived);
+			client.StartToConnect("localhost", 54321);
+			
+			Thread.Sleep(500);
+			
+			client.Send("Hello");
+			Thread.Sleep(500);
+			Assert.AreEqual("Hello", _serverReceivedMsgs[0]);
+
+			client.Stop();
+			_listener.Stop();
 		}
 
 		private void _ClientReceived(string msg)

@@ -35,6 +35,9 @@ namespace Sharchive.Net
 		{
 			EndListen();
 			EndAllRespondThreads();
+			
+			if (_listener != null)
+				_listener.Stop();
 		}
 
 		public void StartToListen()
