@@ -30,6 +30,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="log4net">
+      <HintPath>..\3rdparty\log4net\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +56,7 @@
     <Compile Include="Net\TLVMessagePacker.cs" />
     <Compile Include="Net\LVMessagePacker.cs" />
     <Compile Include="Scm\SvnAdapter.cs" />
+    <Compile Include="Net\SynchronousSocketClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -59,5 +64,11 @@
     <Folder Include="Net\" />
     <Folder Include="Patterns\" />
     <Folder Include="TypeExtensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Configuration\log4net.config">
+      <Link>log4net.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

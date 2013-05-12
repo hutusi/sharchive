@@ -9,6 +9,8 @@ namespace Sharchive.Net
 {
 	public class SocketListener
 	{
+		private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(SocketListener));
+
 		public SocketListener()
 		{
 			_threadByClient = new Dictionary<TcpClient, Thread>();
@@ -25,7 +27,9 @@ namespace Sharchive.Net
 		}
 
 		public void Start()
-		{	
+		{
+			Log.Debug("SocketListener started. Listening port: " + _port.ToString());
+
 			IPAddress localAddr = IPAddress.Parse("127.0.0.1");
 			_listener = new TcpListener(localAddr, _port);
 			_listener.Start();
@@ -33,6 +37,8 @@ namespace Sharchive.Net
 
 		public void Stop()
 		{
+			Log.Debug("SocketListener stoped.");
+
 			EndListen();
 			EndAllRespondThreads();
 			
@@ -42,12 +48,16 @@ namespace Sharchive.Net
 
 		public void StartToListen()
 		{
+			Log.Debug("SocketListener started to listen.");
+
 			_listenThread = new Thread(() => Listen());
 			_listenThread.Start();
 		}
 
 		public void EndListen()
 		{
+			Log.Debug("SocketListener stoped listening.");
+
 			if (_listenThread != null) {
 				_listenThread.Abort();
 				_listenThread = null;
@@ -56,6 +66,8 @@ namespace Sharchive.Net
 
 		public void EndAllRespondThreads()
 		{
+			Log.Debug("SocketListener ended all respond threads.");
+
 			foreach (var thread in _threadByClient.Values) {
 				if (thread != null)
 					thread.Abort();
@@ -73,6 +85,16 @@ namespace Sharchive.Net
 			}
 		}
 
+		public void Send(TcpClient client, string message)
+		{	
+			var msg = _messagePacker.Wrap(message);
+			var stream = client.GetStream();
+			using (var streamWriter = new StreamWriter(stream)) {
+				streamWriter.Write(msg);
+				streamWriter.Flush();
+			}
+		}
+
 		private void _RespondClient(object param)
 		{
 			TcpClient client = param as TcpClient;
@@ -85,7 +107,8 @@ namespace Sharchive.Net
 						_receivedMsgHandler(client, s);
 				}
 			}
-			catch (Exception) {
+			catch (Exception ex) {
+				Log.Error("_RespondClient", ex);
 			}
 		}
 

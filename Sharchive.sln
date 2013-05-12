@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharchive.UnitTest", "Sharc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdparty", "3rdparty", "{57A4D502-1C97-4130-A2DB-1829EBA31245}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{D22A2AF6-9A03-444B-9C25-9523CE24C727}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration\log4net.config = Configuration\log4net.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

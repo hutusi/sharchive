@@ -42,6 +42,8 @@
     <Compile Include="Scm\TestSvnAdapter.cs" />
     <Compile Include="Net\TestAsynchronousSocketListener.cs" />
     <Compile Include="Net\TestTLVMessagePacker.cs" />
+    <Compile Include="Net\TestAsynchronousSocketClient.cs" />
+    <Compile Include="Net\TestSynchronousSocketClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -54,5 +56,11 @@
       <Project>{F7DAA22D-298A-4FD5-9B1E-D4DB5855B8FF}</Project>
       <Name>Sharchive</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Configuration\log4net.config">
+      <Link>log4net.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

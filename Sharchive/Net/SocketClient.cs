@@ -24,12 +24,12 @@ namespace Sharchive.Net
 			Start();
 		}
 
-		public void Start()
+		public virtual void Start()
 		{
 			_client = new TcpClient(_hostname, _port);
 		}
 
-		public void Stop()
+		public virtual void Stop()
 		{
 			if (_client != null)
 				_client.Close();
@@ -41,7 +41,7 @@ namespace Sharchive.Net
 				_client.Close();
 		}
 
-		public void Send(string message)
+		public virtual void Send(string message)
 		{
 			var msg = _messagePacker.Wrap(message);
 			_Write(msg.ToString());
@@ -58,10 +58,15 @@ namespace Sharchive.Net
 
 		public string Receive()
 		{
-			var msg = _Read();
-			if (_receivedMsgHandler != null)
-				_receivedMsgHandler(msg);
-			return msg;
+			try {
+				var msg = _Read();
+				if (_receivedMsgHandler != null)
+					_receivedMsgHandler(msg);
+				return msg;
+			}
+			catch (Exception) {
+				return null;
+			}
 		}
 
 		private string _Read()
