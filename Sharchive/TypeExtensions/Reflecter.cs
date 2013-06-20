@@ -1,6 +1,6 @@
 using System;
 
-namespace Sharchive
+namespace Sharchive.TypeExtensions
 {
 	public class Reflecter
 	{
